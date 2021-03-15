@@ -9,10 +9,8 @@ import com.friendlymoney.backend.service.api.UserService
 import org.springframework.http.ResponseEntity
 import org.springframework.security.authentication.AuthenticationManager
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken
-import org.springframework.web.bind.annotation.PostMapping
-import org.springframework.web.bind.annotation.RequestBody
-import org.springframework.web.bind.annotation.RequestMapping
-import org.springframework.web.bind.annotation.RestController
+import org.springframework.security.core.context.SecurityContextHolder
+import org.springframework.web.bind.annotation.*
 
 @RestController
 @RequestMapping("/auth")
@@ -26,11 +24,12 @@ class AuthenticationController(
     fun login(@RequestBody loginRequest: LoginRequest): ResponseEntity<LoginResponse> {
         authenticationManager.authenticate(UsernamePasswordAuthenticationToken(loginRequest.username, loginRequest.password))
 
-        val roles = userService.findByUserName(loginRequest.username)?.roles!!
+        val user = userService.findByUserName(loginRequest.username)!!
+        val roles = user.roles
         val token = jwtTokenProvider.createToken(loginRequest.username, roles)
 
         val response = LoginResponse(
-                loginRequest.username,
+                user,
                 token
         )
 
@@ -40,6 +39,12 @@ class AuthenticationController(
     @PostMapping("/signup")
     fun signUp(@RequestBody signUpRequest: SignUpRequest): ResponseEntity<User> {
         val user = userService.register(signUpRequest)
+        return ResponseEntity.ok(user)
+    }
+
+    @GetMapping("/profile")
+    fun profile(): ResponseEntity<User> {
+        val user = userService.findByUserName(SecurityContextHolder.getContext().authentication.name)!!
         return ResponseEntity.ok(user)
     }
 }

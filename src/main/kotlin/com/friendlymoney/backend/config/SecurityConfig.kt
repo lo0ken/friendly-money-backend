@@ -28,11 +28,11 @@ class SecurityConfig(
         http
                 .httpBasic().disable()
                 .csrf().disable()
+                .cors().and()
                 .authorizeRequests()
                 .antMatchers(loginEndpoint).permitAll()
                 .antMatchers(signUpEndpoint).permitAll()
                 .anyRequest().authenticated()
-                .and()
 
         http.addFilterBefore(JwtTokenFilter(jwtTokenProvider), UsernamePasswordAuthenticationFilter::class.java)
     }
