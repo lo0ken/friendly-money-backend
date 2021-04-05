@@ -10,6 +10,9 @@ import javax.persistence.Table
 class CategoryEntity(
        val name: String,
 
+       @ManyToOne(fetch = FetchType.EAGER)
+       val type: CategoryTypeEntity,
+
        @ManyToOne(fetch = FetchType.LAZY)
        val user: UserEntity
 ): BaseEntity()

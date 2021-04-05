@@ -11,6 +11,6 @@ values (default, 'EXPENSE', 'Expense'),
 create table category(
     id serial not null primary key,
     name varchar not null,
-    type int not null references category_type(id),
+    type_id int not null references category_type(id),
     user_id int not null references users(id)
 );
