@@ -9,8 +9,11 @@ import javax.persistence.Table
 @Entity
 @Table(name = "transaction_type")
 class TransactionTypeEntity(
+
         val code: String,
 
         @Enumerated(EnumType.STRING)
-        val name: TransactionTypeEnum
-): BaseEntity()
+        val name: TransactionTypeEnum,
+
+        id: Int?
+): BaseEntity(id)

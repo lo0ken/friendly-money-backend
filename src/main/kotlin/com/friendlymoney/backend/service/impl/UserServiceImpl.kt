@@ -24,7 +24,7 @@ class UserServiceImpl(
         val user = userRepository.findByUsername(username)
 
         if (user != null) {
-            return UserMapper.INSTANCE.convertToDto(user)
+            return UserMapper.USER_MAPPER.convertToDto(user)
         }
         return null
     }
@@ -33,14 +33,14 @@ class UserServiceImpl(
         val userRole = roleRepository.findByName(RoleEnum.USER.name)
 
         val userEntity = UserEntity(
-                signUpRequest.username,
-                passwordEncoder.encode(signUpRequest.password),
-                signUpRequest.phone,
-                signUpRequest.email,
-                Collections.singletonList(userRole)
+                username = signUpRequest.username,
+                password = passwordEncoder.encode(signUpRequest.password),
+                phone = signUpRequest.phone,
+                email = signUpRequest.email,
+                roles = Collections.singletonList(userRole)
         )
 
         val newUser = userRepository.save(userEntity)
-        return UserMapper.INSTANCE.convertToDto(newUser)
+        return UserMapper.USER_MAPPER.convertToDto(newUser)
     }
 }

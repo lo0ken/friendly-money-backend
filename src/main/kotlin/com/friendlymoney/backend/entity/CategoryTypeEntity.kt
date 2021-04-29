@@ -9,8 +9,11 @@ import javax.persistence.Table
 @Entity
 @Table(name = "category_type")
 class CategoryTypeEntity(
+
         val code: String,
 
         @Enumerated(EnumType.STRING)
-        val name: CategoryTypeEnum
-): BaseEntity()
+        val name: CategoryTypeEnum,
+
+        id: Int?
+): BaseEntity(id)

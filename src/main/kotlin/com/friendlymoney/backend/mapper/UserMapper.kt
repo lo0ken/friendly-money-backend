@@ -8,8 +8,9 @@ import org.mapstruct.factory.Mappers
 @Mapper
 interface UserMapper {
     companion object {
-        val INSTANCE: UserMapper = Mappers.getMapper(UserMapper::class.java)
+        val USER_MAPPER: UserMapper = Mappers.getMapper(UserMapper::class.java)
     }
 
-    fun convertToDto(userEntity: UserEntity): User
+    fun convertToDto(entity: UserEntity): User
+    fun convertToEntity(dto: User): UserEntity
 }

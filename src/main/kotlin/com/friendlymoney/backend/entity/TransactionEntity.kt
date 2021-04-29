@@ -10,7 +10,9 @@ import javax.persistence.Table
 @Entity
 @Table(name = "transaction")
 class TransactionEntity(
+
         val name: String,
+
         val amount: BigDecimal,
 
         @ManyToOne(fetch = FetchType.EAGER)
@@ -20,5 +22,8 @@ class TransactionEntity(
         val category: CategoryEntity,
 
         var comment: String,
-        val creationDate: LocalDate
-): BaseEntity()
+
+        val creationDate: LocalDate,
+
+        id: Int?
+): BaseEntity(id)

@@ -1,11 +1,13 @@
 package com.friendlymoney.backend.entity
 
-import javax.persistence.*
+import javax.persistence.Entity
+import javax.persistence.Table
 
 @Entity
 @Table(name = "roles")
 class RoleEntity(
 
-        val name: String
+        val name: String,
 
-): BaseEntity()
+        id: Int?
+): BaseEntity(id)
