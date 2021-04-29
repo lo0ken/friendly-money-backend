@@ -10,10 +10,10 @@ import javax.persistence.Table
 @Table(name = "category_type")
 class CategoryTypeEntity(
 
-        val code: String,
-
         @Enumerated(EnumType.STRING)
-        val name: CategoryTypeEnum,
+        val code: CategoryTypeEnum,
+
+        val name: String,
 
         id: Int?
 ): BaseEntity(id)

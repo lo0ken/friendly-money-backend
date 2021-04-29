@@ -10,10 +10,10 @@ import javax.persistence.Table
 @Table(name = "transaction_type")
 class TransactionTypeEntity(
 
-        val code: String,
-
         @Enumerated(EnumType.STRING)
-        val name: TransactionTypeEnum,
+        val code: TransactionTypeEnum,
+
+        val name: String,
 
         id: Int?
 ): BaseEntity(id)
