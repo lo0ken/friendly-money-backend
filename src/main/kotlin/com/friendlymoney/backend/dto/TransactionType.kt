@@ -1,6 +1,6 @@
 package com.friendlymoney.backend.dto
 
-import com.friendlymoney.backend.enum.TransactionTypeEnum
+import com.friendlymoney.backend.enums.TransactionTypeEnum
 
 data class TransactionType(
     val code: TransactionTypeEnum,

@@ -1,6 +1,6 @@
 package com.friendlymoney.backend.entity
 
-import com.friendlymoney.backend.enum.TransactionTypeEnum
+import com.friendlymoney.backend.enums.TransactionTypeEnum
 import javax.persistence.Entity
 import javax.persistence.EnumType
 import javax.persistence.Enumerated

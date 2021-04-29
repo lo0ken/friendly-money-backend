@@ -1,4 +1,4 @@
-package com.friendlymoney.backend.enum
+package com.friendlymoney.backend.enums
 
 enum class TransactionTypeEnum {
     EXPENSE,

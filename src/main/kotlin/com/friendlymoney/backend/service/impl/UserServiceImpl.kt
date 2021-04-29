@@ -2,7 +2,7 @@ package com.friendlymoney.backend.service.impl
 
 import com.friendlymoney.backend.dto.User
 import com.friendlymoney.backend.entity.UserEntity
-import com.friendlymoney.backend.enum.RoleEnum
+import com.friendlymoney.backend.enums.RoleEnum
 import com.friendlymoney.backend.mapper.UserMapper
 import com.friendlymoney.backend.repository.RoleRepository
 import com.friendlymoney.backend.repository.UserRepository

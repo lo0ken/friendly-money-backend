@@ -1,6 +1,6 @@
 package com.friendlymoney.backend.dto
 
-import com.friendlymoney.backend.enum.CategoryTypeEnum
+import com.friendlymoney.backend.enums.CategoryTypeEnum
 
 data class CategoryType(
         val code: CategoryTypeEnum,
